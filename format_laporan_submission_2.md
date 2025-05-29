@@ -197,7 +197,7 @@ Berdasarkan hasil dari analisis distribusi genres, genres dengen genre (no genre
 
 ### 2. Menghapus Kolom Tidak Diperlukan
 
-Selanjutnya, tahapan ini dilakukan untuk menggabungkan kedua variabel menjadi 1 dataframe. Hal ini dilakukan agar kedua informasi pada variabel tersebut dapat terintegrasi dengan baik guna mendukung pemodelan yang lebih akurat. berikut adalah implementasi kodenya
+Selanjutnya, pada tahapan ini peneliti akan melakukan penghapusan pada fitur yang tidak diperlukan. Hal ini dilakukan agar pada tahap pemodelan nanti variabel yang akan digunakan hanyalah variabel yang penting saja. Berikut adalah implementasi kodenya.
 
 ```
 rating = rating.drop('timestamp', axis=1)

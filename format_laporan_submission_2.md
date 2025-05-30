@@ -4,13 +4,14 @@
 
 ### Latar Belakang
 
-Di era digital, platform streaming seperti Netflix dan Disney+ menyediakan ribuan film, tetapi banyaknya pilihan justru menyebabkan masalah baru.  Di tengah katalog yang luas, pengguna sering bingung menemukan konten yang sesuai dengan preferensi mereka.  Seperti yang ditunjukkan oleh studi Nielsen, rata-rata pelanggan menghabiskan 18 menit hanya untuk memilih film, sementara penelitian McKinsey menunjukkan bahwa 80% langganan pelanggan menghentikan pembelian karena rekomendasi yang tidak relevan.  Fenomena overload data ini tidak hanya membuang waktu, tetapi juga membuat pengguna kurang puas dan setia [[1](https://j-ptiik.ub.ac.id/index.php/j-ptiik/article/view/9163/4159)].
+Pertumbuhan pesat platform e-commerce dan ritel online telah mengubah secara fundamental cara konsumen menemukan dan membeli produk fashion. Dengan jutaan produk fashion yang tersedia di berbagai platform online, konsumen seringkali dihadapkan pada tantangan kelebihan informasi, sehingga semakin sulit untuk menemukan produk yang sesuai dengan preferensi pribadi, gaya, dan kebutuhan mereka. Fenomena ini telah menciptakan kesenjangan yang signifikan antara ekspektasi konsumen dan kemampuan mereka untuk menavigasi katalog produk yang luas dengan efisien. Akibatnya, pengembangan sistem rekomendasi cerdas menjadi krusial untuk meningkatkan pengalaman pengguna, meningkatkan kepuasan pelanggan, dan mendorong pertumbuhan bisnis di industri fashion yang kompetitif [[1](https://j-ptiik.ub.ac.id/index.php/j-ptiik/article/view/9163/4159)].
 
-Terbukti bahwa metode rekomendasi konvensional yang bergantung pada kategori umum seperti genre atau film populer tidak cukup.  Metode seperti ini tidak dapat memenuhi kebutuhan khusus setiap orang, seperti ketertarikan aktor tertentu, nuansa cerita, atau preferensi sutradara.  Akibatnya, pengguna menerima rekomendasi yang umum dan tidak personal, yang pada akhirnya menyebabkan mereka kurang terlibat dengan platform [[2](https://jurnal.plb.ac.id/index.php/tematik/article/view/683/400)].
+Sistem rekomendasi telah muncul sebagai alat yang kuat yang memanfaatkan algoritma pembelajaran mesin dan analisis data untuk memberikan saran produk yang dipersonalisasi kepada pengguna berdasarkan perilaku historis, preferensi, dan karakteristik mereka. Dalam konteks ritel fashion, sistem ini memainkan peran penting dalam membantu pelanggan menemukan produk baru, mengurangi waktu pengambilan keputusan, dan pada akhirnya meningkatkan pengalaman berbelanja mereka. Implementasi algoritma rekomendasi yang efektif dapat berdampak signifikan pada metrik bisnis kunci seperti tingkat konversi, nilai pesanan rata-rata, dan retensi pelanggan. Selain itu, rekomendasi yang dipersonalisasi membantu pengecer fashion memahami preferensi dan pola pembelian pelanggan mereka dengan lebih baik, memungkinkan mereka untuk mengoptimalkan manajemen inventaris dan strategi pemasaran [[2](https://jurnal.plb.ac.id/index.php/tematik/article/view/683/400)].
 
-Sistem rekomendasi berbasis AI adalah solusi penting untuk masalah ini. Dengan menggunakan teknik machine learning seperti Collaborative Filtering (menganalisis pola pengguna yang mirip) dan Content Based Filtering (mencari kesamaan atribut film), sistem dapat menghasilkan rekomendasi yang sangat individual [[3](http://ejurnal.umri.ac.id/index.php/coscitech/article/view/5131/2462)]. Misalnya, sistem akan menyarankan film sci-fi seperti "Inception" kepada orang yang menyukainya tanpa mempertimbangkan sutradara (Christopher Nolan) atau kompleksitas alur cerita [[4](https://www.neliti.com/publications/491509/implementasi-metode-collaborative-filtering-untuk-sistem-rekomendasi-penjualan-p)].
 
-Implementasi sistem ini meningkatkan retensi pelanggan dan menghemat waktu pengguna hingga 70% (penelitian MIT).  Platform memiliki kemampuan untuk mengubah ketidakpastian menjadi keputusan cepat sekaligus meningkatkan nilai bisnis melalui peningkatan keterlibatan pengguna.  Pada akhirnya, tujuan proyek ini adalah untuk menjembatani perbedaan antara kebutuhan pengguna untuk menyesuaikan konten dan banyaknya konten yang tersedia.
+Di antara berbagai teknik rekomendasi yang tersedia, Content-Based Filtering dan Collaborative Filtering mewakili dua pendekatan fundamental yang telah terbukti sangat efektif dalam skenario rekomendasi produk fashion [[3](http://ejurnal.umri.ac.id/index.php/coscitech/article/view/5131/2462)]. Content-Based Filtering berfokus pada analisis karakteristik dan atribut intrinsik produk fashion, seperti warna, gaya, bahan, merek, dan kategori, untuk merekomendasikan barang yang serupa dengan yang sebelumnya disukai atau dibeli oleh pengguna. Pendekatan ini sangat berharga dalam ritel fashion karena dapat menangkap preferensi gaya spesifik dan pilihan estetika yang krusial dalam pemilihan pakaian dan aksesori. Di sisi lain, penyaringan kolaboratif memanfaatkan perilaku dan preferensi kolektif pengguna yang serupa untuk menghasilkan rekomendasi, beroperasi berdasarkan prinsip bahwa pengguna dengan selera serupa di masa lalu akan terus memiliki preferensi serupa di masa depan [[4](https://www.neliti.com/publications/491509/implementasi-metode-collaborative-filtering-untuk-sistem-rekomendasi-penjualan-p)].
+
+Proyek ini bertujuan untuk mengembangkan dan mengimplementasikan sistem rekomendasi produk fashion yang komprehensif dengan menggabungkan teknik Content-Based Filtering dan Collaborative Filtering menggunakan dataset [_Fashion Product_](https://www.kaggle.com/datasets/bhanupratapbiswas/fashion-products). Dengan mengintegrasikan kedua pendekatan komplementer ini, sistem akan mampu mengatasi keterbatasan yang melekat pada masing-masing metode individu sambil memaksimalkan kekuatan masing-masing. Komponen berbasis konten akan memastikan bahwa rekomendasi tetap relevan dengan atribut produk spesifik dan preferensi gaya pengguna, sementara komponen filtrasi kolaboratif akan memperkenalkan keragaman dan membantu pengguna menemukan tren dan produk fashion baru yang mungkin tidak mereka pertimbangkan sebelumnya. Melalui implementasi ini, proyek ini bertujuan untuk menunjukkan efektivitas pendekatan rekomendasi hibrida dalam mengatasi tantangan nyata dalam e-commerce fashion dan memberikan wawasan tentang pertimbangan praktis yang terlibat dalam pengembangan sistem semacam itu.
 
 ### Referensi
 
@@ -24,96 +25,82 @@ Implementasi sistem ini meningkatkan retensi pelanggan dan menghemat waktu pengg
 
 ## Business Understanding
 
-Pada bagian ini, peneliti menggunakan dataset dari [_Movie Recommendation System_](https://www.kaggle.com/datasets/parasharmanas/movie-recommendation-system) untuk mendukung pelaksanaan proyek ini dengan baik. Berikut merupakan beberapa permaasalahan, tujuan, serta pernyataan solusi yang dapat peneliti jabarkan.
+Pada bagian ini, peneliti menggunakan dataset dari [_Fashion Product_](https://www.kaggle.com/datasets/bhanupratapbiswas/fashion-products) untuk mendukung pelaksanaan proyek ini dengan baik. Berikut merupakan beberapa permasalahan, tujuan, serta pernyataan solusi yang dapat peneliti jabarkan.
 
 ### Problem Statements
 
 Adapun agar dapat memberikan tujuan dan solusi yang efektif, berikut merupakan beberapa permasalahan yang telah peneliti angkat.
 
-- Bagaimana cara agar pengguna dapat menerima rekomendasi film berdasarkan preferensi yang mereka miliki?
-- Bagaimana cara agar pengguna tidak menghabiskan banyak waktu untuk memilih film yang ingin ditonton?
+- Bagaimana cara agar pengguna dapat menerima rekomendasi produk berdasarkan preferensi yang mereka miliki?
+- Bagaimana cara agar pengguna tidak menghabiskan banyak waktu untuk memilih produk yang ingin mereka beli?
 - Bagaimana cara menerapkan algoritma machine learning yang dapat memberikan rekomendasi yang tepat terhadap pengguna?
 
 ### Goals
 
 Berdasarkan problem statements yang ada, berikut adalah beberapa tujuan yang ingin dicapai oleh peneliti.
-- Untuk memberikan sistem rekomendasi film terhadap pengguna berdasarkan preferensi yang mereka miliki 
-- Untuk mengatasi dan mengurangi waktu pencarian film agar pengguna tidak merasa kebingungan
+- Untuk memberikan sistem rekomendasi produk terhadap pengguna berdasarkan preferensi yang mereka miliki 
+- Untuk mengatasi dan mengurangi waktu pencarian produk agar pengguna tidak merasa kebingungan
 - Untuk menerapkan algoritma machine learning yang dapat memberikan rekomendasi terhadap pengguna
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Approach” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
-
-    ### Solution statements
-    - Mengajukan 2 atau lebih solution approach (algoritma atau pendekatan sistem rekomendasi).
+### Solution statements
+- Menggunakan Teknik Content-Based Filtering untuk memberikan rekomendasi berdasarkan item yang disukai oleh pengguna
+- Menggunakan Teknik Collaborative Filtering untuk memberikan rekomendasi berdasarkan rating terhadap item yang diberikan oleh pengguna
 
 ## Data Understanding
-Pada tahapan ini, peneliti melakukan data understanding untuk dapat memahami variabel-variabel, tingkat kebersihan data dari duplikasi dan nilai yang kosong, serta statistika deskriptif yang ada pada dataset [_Movie Recommendation System_](https://www.kaggle.com/datasets/parasharmanas/movie-recommendation-system) yang akan digunakan. berikut adalah beberapa tahapannya.
-
-Pada dataset yang peneliti gunakan, terdapat dua file dalam bentuk csv yang merupakan bagian keseluruhan dari dataset tersebut, berikut adalah informasi mengenai dua file data tersebut.
+Pada tahapan ini, peneliti melakukan data understanding untuk dapat memahami variabel-variabel, tingkat kebersihan data dari duplikasi dan nilai yang kosong, serta statistika deskriptif yang ada pada dataset [_Fashion Product_](https://www.kaggle.com/datasets/bhanupratapbiswas/fashion-products) yang akan digunakan. Berikut adalah beberapa tahapannya.
 
 ### Deskripsi Variabel
 
-#### Movies.csv
-
-File ini berisi data terkait `movieId`, `title`, dan `genres`. Berikut adalah informasi lengkap mengenai fitur-fitur tersebut.
+Pada tahapan ini, peneliti akan menjabarkan terkait fitur dan deskripsi fitur pada dataset yang digunakan. Berikut ini adalah penjabarannya yang disusun dalam bentuk tabel.
 
 | Fitur     | Deskripsi                                                  |
 |-----------|------------------------------------------------------------|
-| movieId   | Merupakan primary key yang merepresentasikan setiap film dalam dataset              |
-| title     | Merupakan judul dari setiap film yang ada                 |
-| genres    | Merupakan genre dari setiap film yang ada                 |
-
-#### Ratings.csv
-
-File ini berisi data terkait userId, movieId, rating, dan timestamp. Berikut adalah informasi lengkap mengenai fitur-fitur tersebut.
-
-| Fitur     | Deskripsi                                                                 |
-|-----------|--------------------------------------------------------------------------|
-| userId    | Merupakan primary key yang merepresentasikan setiap pengguna (user)         |
-| movieId   | Merupakan foreign key yang merepresentasikan setiap film dalam dataset      |
-| rating    | Nilai penilaian atau skor yang diberikan oleh pengguna terhadap suatu film|
-| timestamp | Waktu ketika pengguna memberikan rating, dalam format Unix timestamp     |
+|User ID|Merupakan ID unik yang merepresentasikan id pengguna|
+|Product ID|Merupakan ID unik yang merepresentasikan id produk|
+|Product Name|Merupakan nama produk|                 |
+|Brand|Merupakan brand dari produk|
+|Category|Merupakan Kategori dari produk|
+|Price|Merupakan harga dari produk|
+|Rating|Merupakan rating yang diberikan pengguna terhadap produk yang di beli|
+|Color|Merupakan representasi warna dari produk|
+|Size|Merupakan representasi ukuran dari produk|
 
 ### Memahami Informasi pada Data
 
-Tahapan ini dilakukan untuk mengetahui informasi penting yang ada pada dataframe. dengan menggunakan kode `movies.info()` kita bisa mendapatkan informasi seperti jumlah baris dan kolom, jenis tipe data pada setiap fitur, dan jumlah missing value yang ada pada dataframe movies. Berikut adalah implementasi kodenya.
+Tahapan ini dilakukan untuk mengetahui informasi penting yang ada pada dataframe. Dengan menggunakan kode `fashion.head(5)` dan `fashion.info()` kita dapat menampilkan 5 baris awal pada dataframe yang digunakan dan juga bisa mendapatkan informasi seperti jumlah baris dan kolom, jenis tipe data pada setiap fitur, dan jumlah missing value yang ada pada dataframe fashion. Berikut adalah implementasi kodenya.
 
-| No | Column   | Non-Null Count | Dtype  |
-|----|----------|----------------|--------|
-| 1  | movieId  | 62,423         | int64  |
-| 2  | title    | 62,423         | object |
-| 3  | genres   | 62,423         | object |
+| User ID | Product ID | Product Name | Brand  | Category        | Price | Rating    | Color  | Size |
+|---------|------------|---------------|--------|------------------|--------|-----------|--------|------|
+| 19      | 1          | Dress         | Adidas | Men's Fashion    | 40     | 1.043159  | Black  | XL   |
+| 97      | 2          | Shoes         | H&M    | Women's Fashion  | 82     | 4.026416  | Black  | L    |
+| 25      | 3          | Dress         | Adidas | Women's Fashion  | 44     | 3.337938  | Yellow | XL   |
+| 57      | 4          | Shoes         | Zara   | Men's Fashion    | 23     | 1.049523  | White  | S    |
+| 79      | 5          | T-shirt       | Adidas | Men's Fashion    | 79     | 4.302773  | Black  | M    |
 
-Dari hasil implementasi kode tersebut terdapat 3 jumlah kolom dengan total 62423 baris. Pada dataframe tersebut data tergolong bersih dari missing value yang ditandakan dengan non-null. Kemudian, berikut adalah hasil dari implementasi kode yang diterapkan pada variabel rating `rating.info()`.
 
-![image](https://github.com/user-attachments/assets/111c9e10-f19a-48a3-9e6b-d80f067234c1)
+| No | Column        | Count | Non-Null Count| Dtype   |
+|----|---------------|----------------|---------|---------|
+| 0  | User ID       | 1000           | Non-Null|int64   |
+| 1  | Product ID    | 1000           | Non-Null|int64   |
+| 2  | Product Name  | 1000           | Non-Null|object  |
+| 3  | Brand         | 1000           | Non-Null |object  |
+| 4  | Category      | 1000           |Non-Null  |object  |
+| 5  | Price         | 1000           | Non-Null   |int64   |
+| 6  | Rating        | 1000           | Non-Null |float64 |
+| 7  | Color         | 1000           | Non-Null  |object  |
+| 8  | Size          | 1000           | Non-Null  |object  |
 
-Dari hasil implementasi kode tersebut terdapat 4 jumlah kolom dengan total 25000095 baris. Namun pada hasil dari implementasi kode rating.info() tidak dapat menampilkan informasi terkait missing value, dikarenakan terlalu banyaknya jumlah data yang ada.
-
-### Mengecek Missing Value (Rating)
-
-Selanjutnya, karena informasi terkait missing value tidak dapat diketahui dengan menggunakan rating.info(), peneliti menggunakan implementasi kode berikut `rating.isna().sum()` unuk mendapatkan informasi terkait missing value yang ada pada variabel rating.
-
-| Column | Jumlah Missing Value   |
-|---------|-----------------------|
-| userId  | 0 |
-| movieId | 0 |
-| rating  |  0  |
-| timestamp | 0 |
-
-dari hasil tersebut data dipastikan aman dari missing value yang diindikasikan oleh nilai 0 pada setiap kolom nya
+Dari hasil implementasi kode tersebut terdapat 9 jumlah kolom dengan total 1000 baris. Pada dataframe tersebut data tergolong bersih dari missing value yang ditandakan dengan non-null
 
 ### Mengecek Duplikasi Data
 
-Selanjutnya, tahapan ini dilakukan untuk mendapatkan informasi terkait jumlah dauplikasi data pada dataframe movies dan rating yang telah dibuat. Dengan menggunakan fungsi `duplicated().sum()` kita bisa melihat jumlah duplikasi data yang ada pada kedua variabel yang akan digunakan. Berikut adalah hasil dari implementasi kode nya.
+Selanjutnya, tahapan ini dilakukan untuk mendapatkan informasi terkait jumlah duplikasi data yang ada pada data fashion. Dengan menggunakan fungsi `duplicated().sum()` kita bisa melihat jumlah duplikasi data pada data yang akan digunakan. Berikut adalah hasil dari implementasi kode nya.
 
 ```
-Jumlah duplikasi data pada dataframe rating sebanyak:  0
-Jumlah duplikasi data pada dataframe rating sebanyak:  0
+Jumlah duplikasi data pada dataframe sebanyak:  0
 ```
 
-Dari hasil tersebut dapat diketahui bahwa terdapat total 0 data yang terduplikasi. Hal itu mengindikasikan bahwa tidak ada yang terduplikasi pada variabel movies dan rating.
+Dari hasil tersebut dapat diketahui bahwa terdapat total 0 data yang terduplikasi. Hal tersebut mengindikasikan bahwa tidak ada yang terduplikasi pada data fashion product.
 
 ### Memahami Statistika Deskriptif pada Data
 
@@ -130,48 +117,40 @@ Selanjutnya tahapan ini dilakukan untuk memahami statistika deskriptif pada data
 | 75%       | 121,557       | 8,623         | 4.0        | 1,447,205,000 |
 | max       | 162,541       | 209,171       | 5.0        | 1,574,328,000 |
 
-Dari hasil tersebut, berikut adalah beberapa insight yang dapat disimpulkan.
+Berikut adalah insight singkat terkait kolom **Price** dan **Rating** dari statistik deskriptif dataset:
 
-- Rata-rata Rating: Rata-rata rating (mean) adalah 3.53 dari skala maksimum 5, menunjukkan bahwa secara umum pengguna cenderung memberikan rating yang cukup positif (di atas netral, yaitu 3).
-- Variasi Rating: Standar deviasi rating adalah 1.06, yang berarti ada variasi sedang dalam rating yang diberikan pengguna. Rating tidak terlalu homogen, tetapi juga tidak terlalu bervariasi ekstrem.
-- Rentang Rating: Rating minimum adalah 0.5 dan maksimum adalah 5.0, menunjukkan bahwa pengguna memanfaatkan seluruh skala rating yang tersedia, meskipun rating rendah (di bawah 3) lebih jarang terjadi berdasarkan distribusi kuartil.
+- **Price**:
+  - Rata-rata harga produk adalah 55.78, dengan rentang harga dari 10 hingga 100, menunjukkan variasi harga yang cukup lebar.
+  - Median harga (57) hampir sama dengan rata-rata, mengindikasikan distribusi harga yang cukup simetris.
+  - Sebagian besar harga (50%) berada antara 33 (Q1) dan 78.25 (Q3), menunjukkan bahwa mayoritas produk memiliki harga menengah.
+  - Standar deviasi harga (26.29) menunjukkan adanya variasi yang moderat dalam harga produk.
+
+- **Rating**:
+  - Rata-rata rating adalah 2.99 dari skala maksimum 5, menunjukkan bahwa pengguna cenderung memberikan rating yang sedikit di bawah rata-rata (netral).
+  - Median rating (2.98) sangat dekat dengan rata-rata, mengindikasikan distribusi rating yang cukup simetris.
+  - Sebagian besar rating (50%) berada antara 1.99 (Q1) dan 3.99 (Q3), menunjukkan bahwa rating cenderung berkisar dari rendah hingga tinggi, dengan sedikit kecenderungan ke arah rating sedang.
+  - Standar deviasi rating (1.15) menunjukkan variasi yang cukup besar dalam penilaian pengguna, dari 1.00 hingga 4.99.
 
 ### Exploratory Data Analysis
 
 Selanjutnya, tahapan ini dilakukan untuk mendapatkan hasil analisis mengenai insight terkait distribusi data, dan lain sebagainya dalam bentuk visualisasi. Berikut adalah beberapa implementasinya
 
-### 1. Analisis Distribusi Rating
+### 1. Analisis Distribusi Brand
 
-Tahapan ini dilakukan untuk mendapatkan insight terkait bagaimana distribusi dari rating yang diberikan oleh pengguna. tahapan ini mengimplementasikan kode sns.countplot() yang tersedia pada library seaborn. berikut adalah hasil dari implementasinya.
+Tahapan ini dilakukan untuk mendapatkan insight terkait bagaimana distribusi dari brand yang dibeli oleh pengguna. tahapan ini mengimplementasikan kode sns.countplot() yang tersedia pada library seaborn. Berikut adalah hasil dari implementasinya.
 
-![image](https://github.com/user-attachments/assets/bed1670b-61b7-4d20-9d3a-3b36f4e71f57)
+![image](https://github.com/user-attachments/assets/659aa4d1-8270-4685-840a-d0ed76f71a9d)
 
-Berikut adalah insight yang dapat diambil dari hasil visualisasi diatas.
+Adidas, H&M, Zara, Gucci, dan Nike semuanya terwakili secara relatif merata dalam dataset, menurut grafik distribusi merek, dengan setiap merek muncul dalam jumlah yang berkisar antara 175 hingga 200.  Mendekati angka 200, Nike menonjol sebagai merek yang paling banyak terwakili, menunjukkan kemungkinan peningkatan ketersediaan atau popularitas dalam dataset.  Gucci tampaknya memiliki jumlah terendah di antara kelima merek, berkisar sekitar 175, sementara Adidas, H&M, dan Zara mengikuti dengan jumlah antara 175 dan 190, menunjukkan kehadiran yang stabil.
 
-- Most Rating: pengguna secara keseluruhan memberikan rating sebanyak 4.0 terhadap film yang mereka tonton. Tidak hanya itu, rating 3 dan 5 juga sering diberikan oleh pengguna.
-- Less Rating: jumlah rating paling sedikit yang diberikan oleh pengguna berada pada rating 0.5, 1.0, dan 1.5.
- 
-Dari hasil tersebut, dapat di simpulkan bahwa pengguna merasa puasa terhadap film yang mereka tonton.
+### 2. Analisis Rata-Rata Rating Berdasarkan Brand
 
-### 2. Analisis Disribusi Genres
+Tahapan ini dilakukan untuk mendaptkan informasi terkait bagaimana rata-rata distribusi rating pada tiap brand nya. Dengan melakukan `groupby()` terhadap brand kemudian menghitung rata-rata rating menggunakan fungsi `mean()` dan di visualisasikan menggunaka library matplotlib, peneliti mengharapkan dapat gambaran terkait analisis tersebut. Berikut adalah implementasi kode serta hasilnya.
 
-Tahapan ini dilakukan untuk mendaptkan informasi terkait distribus pada fitur genres. Pada tahapan ini, tidak menerapkan visualisasi dengan menggunakan `sns.countplot()` dikarenakan terlalu banyak jenis genre yang ada pada dataset yang digunakan. berikut adalah hasil dari implementasi kode `movies.genres.value_counts()` yang digunakan.
+![image](https://github.com/user-attachments/assets/66401aec-d85e-419a-b0f1-957993d91b8f)
 
-| Genre                                              | count |
-|----------------------------------------------------|--------|
-| Drama                                              | 9,056  |
-| Comedy                                             | 5,674  |
-| (no genres listed)                                 | 5,062  |
-| Documentary                                        | 4,731  |
-| Comedy\|Drama                                      | 2,386  |
-| ...                                                | ...    |
-| Action\|Fantasy\|Thriller\|IMAX                    | 1      |
-| Action\|Adventure\|Animation\|Children\|Comedy\|... | 1      |
-| Action\|Film-Noir\|Thriller                        | 1      |
-| Action\|Adventure\|Crime\|Drama\|Sci-Fi            | 1      |
-| Mystery\|Sci-Fi\|Thriller\|IMAX                    | 1      |
 
-Dari hasil tersebut, dapat dilihat bahwa pengguna lebih sering menonton film bergenre pure Drama, dan pure Comedy. Hal itu dapat dilihat dari jumlah nilai yang ada pada dataset tersebut, dimana genre pure Drama memeiliki jumlah tontonan sebanyak 9056 kali, dan genre pure comedy memiliki tontonan sebanyak 5674 kali. Dari hasil tersebut juga terdapat genre (no genres listed) yang mengindikasin bahwa tidak ada info spesifik mengenai genre tersebut. genre dengan jenis tersebut akan peneliti hapus pada tahapan data preparation agar tidak mengganggu pada tahap pemodelan.
+Dari hasil tersebut, brand yang memiliki rata-rata rating paling tinggi adalah brand Gucci. Sedangkan brand Nike dengan distribusi data paling banyak memiliki rata-rata rating paling rendah. Hal ini mengindikasin bahwa, terdapat kemungkinan jika semakin banyak data yang terjual (mendapatkan rating) semakin tinggi terjadinya penurunan rata-rata rating secara kumulatif.
 
 
 ## Data Preparation

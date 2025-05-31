@@ -104,7 +104,7 @@ Dari hasil tersebut dapat diketahui bahwa terdapat total 0 data yang terduplikas
 
 ### Memahami Statistika Deskriptif pada Data
 
-Selanjutnya tahapan ini dilakukan untuk memahami statistika deskriptif pada data yang akan digunakan. tahap ini mengimplementasikan fungsi `.describe()` untuk mendapatkan informasi seperti count, mean, standard deviasi, min, kuartil, dan max. fungsi tersebut akan diimplementasikan hanya pada dataframe rating, karena pada dataframe movies tidak ada informasi penting yang dapat diambil terkait statistika deskriptif. berikut adalah implementasi kodenya.
+Selanjutnya tahapan ini dilakukan untuk memahami statistika deskriptif pada data yang akan digunakan. tahap ini mengimplementasikan fungsi `.describe()` untuk mendapatkan informasi seperti count, mean, standard deviasi, min, kuartil, dan max. Berikut adalah implementasi kodenya
 
 | Statistik | userId        | movieId       | rating     | timestamp     |
 |-----------|---------------|---------------|------------|---------------|
@@ -152,56 +152,188 @@ Tahapan ini dilakukan untuk mendaptkan informasi terkait bagaimana rata-rata dis
 
 Dari hasil tersebut, brand yang memiliki rata-rata rating paling tinggi adalah brand Gucci. Sedangkan brand Nike dengan distribusi data paling banyak memiliki rata-rata rating paling rendah. Hal ini mengindikasin bahwa, terdapat kemungkinan jika semakin banyak data yang terjual (mendapatkan rating) semakin tinggi terjadinya penurunan rata-rata rating secara kumulatif.
 
-
 ## Data Preparation
 
-### 1. Menghapus Data Genre yang TIdak Valid
+### 1. Membuat Dataframe untuk Model Content-Based Filtering
 
-Selanjutnya, tahapan ini dilakukan untuk menghapus genre yang tidak memberikan informasi secara spesifik. Genres tersebut terdapat pada dataframe movies dengan genre (no genres listed). Berikut adalah implementasi kodenya.
+Selanjutnya, tahapan ini dilakukan agar fitur-fitur yang tidak digunakan pada model content-based filtering dapat dikecualikan terlebih dahulu untuk mengurangi dimensi data yang akan di modelkan. Berikut adalah implementasi kode nya.
 
-```
-print("Jumlah baris sebelum menghapus (no genres listed): " , len(movies))
-movies = movies.drop(movies[movies['genres'] == '(no genres listed)'].index)
-print("Jumlah baris setelah menghapus (no genres listed): " , len(movies))
-```
+![image](https://github.com/user-attachments/assets/bfdf3191-3a16-46dc-942b-99a0de0e5d49)
 
-Output:
+Dari hasil implementasi kode diatas, peneliti berhasil untuk membuat dataframe baru untuk model content-based filter dengan memilih fitur User ID, Product Name ID, dan Brand sebagai fitur fitur yang akan digunakan ketika pemodelan nanti. Hal pertama yang dilakukan oleh peneliti adalah dengan memnbuat dataframe baru dengan menyalin data-data dari dataframe fashion, kemudian menginisialisasi fitur baru bernama Product Name ID yang memiliki nilai gabungan dari fitur Product Name dan fitur Product ID. Setelah itu, peneliti mengurangi dimensi dari data dengan menyeleksi fitur fitur yang akan digunaka
 
-```
-Jumlah baris sebelum menghapus (no genres listed):  62423
-Jumlah baris setelah menghapus (no genres listed):  57361
-```
+### 2. Membuat Dataframe untuk model Collaborative Filtering
 
-Berdasarkan hasil dari analisis distribusi genres, genres dengen genre (no genres listed) memiliki jumlah sebanyak data sebanyak 5062. Hal itu menandakan bahwa data genres tersebut berhasil dihapus dengan baik jika dilihat dari jumlah data sebelum dan setelah dihapus.
+Setelah membuat dataframe untuk model CBF, peneliti juga membuat dataframe baru khusus untuk digunakan saat pemodelan dengan menggunakan Collaborative Filtering. Berikut adalah hasil dari implementasi kodenya.
 
-### 2. Menghapus Kolom Tidak Diperlukan
+![image](https://github.com/user-attachments/assets/7b91c664-fb75-4ad1-b06b-0d321c936874)
 
-Selanjutnya, pada tahapan ini peneliti akan melakukan penghapusan pada fitur yang tidak diperlukan. Hal ini dilakukan agar pada tahap pemodelan nanti variabel yang akan digunakan hanyalah variabel yang penting saja. Berikut adalah implementasi kodenya.
-
-```
-rating = rating.drop('timestamp', axis=1)
-rating
-```
-
-Dengan mengimplementasikan kode tersebut, fitur timestamp telah berhasil dihapus pada variabel rating.
+Dari hasil tersebut dapat dilihat bahwa peneliti membuat dataframe cf_data. Dataframe tersebut berisi fitur-fitur seperti User ID, Product ID dan Rating. Berbeda dengan model CBF, model Collaborative Filtering sangat membutuhkan fitur rating untuk melakukan pemodelan, karena model tersebut dibuat berdasarkan rating yang diberikan oleh pengguna terhadap suatu item.
 
 ## Modeling
-Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menyajikan dua solusi rekomendasi dengan algoritma yang berbeda.
-- Menjelaskan kelebihan dan kekurangan dari solusi/pendekatan yang dipilih.
+Setelah melakukan tahapan Data Understanding dan Data Preparation, tahapan selanjutnya adalah dengan melakukan tahapan modeling sistem rekomendasi. Model yang digunakan dalam proyek kali ini adalah dengan mencoba menerapkan model Content-Based Filtering dan Collaborative Filtering. Berikut adalah tahapan-tahapnnya.
+
+### 1. Content-Based Filtering Model
+
+Content-based filtering adalah teknik rekomendasi yang menyarankan item kepada pengguna berdasarkan karakteristik item yang sebelumnya mereka minati. Dalam konteks produk fashion, sistem ini menganalisis fitur-fitur intrinsik seperti warna, gaya, merek, kategori, harga, dan atribut musiman untuk membentuk profil item dan pengguna. Sistem kemudian menghitung skor kemiripan antara preferensi pengguna dan karakteristik produk untuk merekomendasikan item yang paling relevan. Pendekatan ini sangat cocok untuk rekomendasi fashion karena keputusan pembelian sering dipengaruhi oleh preferensi gaya, kesesuaian warna, loyalitas merek, dan tren musiman.
+
+**Kelebihan**:
+
+- Transparansi tinggi - mudah dijelaskan mengapa suatu produk direkomendasikan
+- Mengatasi cold start problem untuk item baru
+- Konsistensi dengan preferensi user
+- Coverage yang baik untuk produk niche
+- Privacy-friendly - tidak perlu data user lain
+
+**Kekurangan**:
+
+- Over-specialization - bisa terjebak dalam "filter bubble"
+- Bergantung pada kualitas feature extraction
+- Cold start problem untuk user baru
+- Sulit menangkap preferensi kompleks
+- Kurang adaptif terhadap perubahan preferensi
+
+Setelah mengetahui definisi, kelebihan serta kekurangan dari model content-based filtering, berikut adalah tahapan-tahapan dari pemodelan content-based filtering yang telah dilakukan:
+
+#### 1.1 TF-IDF Vectorizer
+
+TF-IDF (Term Frequency-Inverse Document Frequency) adalah komponen penting dalam sistem content-based filtering yang mengubah deskripsi dan fitur tekstual produk menjadi vektor numerik agar dapat diproses oleh algoritma machine learning. Dalam rekomendasi produk fashion, TF-IDF merepresentasikan atribut seperti deskripsi, kategori, gaya, dan material dengan menilai seberapa sering suatu istilah muncul dalam produk tertentu (TF) dan seberapa unik istilah tersebut dalam seluruh katalog produk (IDF). Proses ini menghasilkan matriks fitur yang memungkinkan perhitungan kemiripan antar produk, sehingga membantu sistem mengenali atribut yang paling relevan dan membedakan satu produk dengan lainnya secara lebih akurat. Berikut adalah contoh hasil dari penerapan TF-IDF pada proyek yang ini.
+
+| Product Name ID | adidas | gucci | zara | nike | ... |
+|-----------------|--------|-------|------|------|-----|
+| Shoes 395       | 0.0    | 0.0   | 0.0  | 1.0  | ... |
+| Jeans 960       | 0.0    | 1.0   | 0.0  | 0.0  | ... |
+| Jeans 346       | 1.0    | 0.0   | 0.0  | 0.0  | ... |
+| Dress 692       | 0.0    | 0.0   | 0.0  | 1.0  | ... |
+| T-shirt 204     | 0.0    | 0.0   | 1.0  | 0.0  | ... |
+| Sweater 441     | 1.0    | 0.0   | 0.0  | 0.0  | ... |
+| Jeans 362       | 1.0    | 0.0   | 0.0  | 0.0  | ... |
+| T-shirt 666     | 0.0    | 0.0   | 0.0  | 0.0  | ... |
+| T-shirt 642     | 0.0    | 1.0   | 0.0  | 0.0  | ... |
+| Sweater 416     | 0.0    | 0.0   | 0.0  | 0.0  | ... |
+
+Hasil diatas merupakan penerapan dari TF-IDF matrix yang telah di buat. Setelah data diubah ke dalam representasi numerik, matriks tersebut disimpan kedalam bentuk dataframe.
+
+#### 1.2 Cosine Similarity
+
+Cosine similarity adalah metrik utama dalam content-based filtering yang mengukur kemiripan antara dua item atau antara preferensi pengguna dan karakteristik produk berdasarkan sudut antara dua vektor fitur. Nilainya berkisar dari 0 hingga 1 (karena fitur produk biasanya non-negatif), dan dihitung menggunakan rumus: 
+
+![image](https://github.com/user-attachments/assets/bd0af1c8-5652-4f9b-b9da-2b4747d33633) 
+
+Metrik ini efektif untuk rekomendasi fashion karena mempertimbangkan arah vektor dibandingkan besarannya, cocok untuk data yang jarang (sparse), efisien secara komputasi, serta bekerja baik dengan representasi fitur dari TF-IDF, sehingga mampu mengenali produk dengan atribut yang mirip seperti gaya, bahan, atau warna. Berikut adalah hasil dari penerapan cosine similarity tersebut.
+
+| Product Name ID | Jeans 851 | Jeans 727 | Jeans 905 | Shoes 667 | T-shirt 471 |
+|-----------------|-----------|-----------|-----------|-----------|--------------|
+| Jeans 738       | 0.0       | 0.0       | 0.0       | 0.0       | 0.0          |
+| Shoes 902       | 0.0       | 0.0       | 0.0       | 0.0       | 0.0          |
+| Jeans 943       | 0.0       | 0.0       | 0.0       | 0.0       | 0.0          |
+| Shoes 188       | 1.0       | 0.0       | 1.0       | 1.0       | 1.0          |
+| Jeans 809       | 0.0       | 1.0       | 0.0       | 0.0       | 0.0          |
+| Shoes 750       | 1.0       | 0.0       | 1.0       | 1.0       | 1.0          |
+| T-shirt 726     | 1.0       | 0.0       | 1.0       | 1.0       | 1.0          |
+| Dress 841       | 0.0       | 0.0       | 0.0       | 0.0       | 0.0          |
+| Sweater 581     | 0.0       | 0.0       | 0.0       | 0.0       | 0.0          |
+| Jeans 497       | 0.0       | 0.0       | 0.0       | 0.0       | 0.0          |
+
+Hasil dari cosine similarity diatas ditampilkan dalam bentuk dataframe dengan menggunakan index dan kolom dari Product Name ID. Setelah melakukan penerapan cosine similarity, tahapan selanjutnya adalah dengan membuat fungsi yang dapat memberikan rekomendasi menggunakan model Content-Based Filtering. berikut adalah implementasi kode beserta hasilnya.
+
+**Implementasi Kode**:
+
+```
+def cbf_recommendations(nama_product, similarity_data=cosine_sim_df, items=cbf_data[['Product Name ID','Brand']], k=10):
+    index = similarity_data.loc[:,nama_product].to_numpy().argpartition(
+        range(-1, -k, -1))
+    closest = similarity_data.columns[index[-1:-(k+2):-1]]
+    closest = closest.drop(nama_product, errors='ignore')
+    return pd.DataFrame(closest).merge(items).head(k)
+cbf_recommendations('Shoes 996')
+```
+
+**Output**:
+
+![image](https://github.com/user-attachments/assets/a0df5050-150f-4281-a317-e223de793626)
+
+Hasil diatas merupakan hasil rekomendasi dari model Content-Based Filtering berdasarakn Product Name ID `Shoes 996` yang meruakan Brand dari Zara. Hasil ditampilkan dalam bentuk dataframe dengan kolom Product Name ID dan Brand sebagai fitur utamanya.
+
+### 2. Collaborative Filtering Model
+
+Collaborative filtering adalah teknik rekomendasi yang memprediksi preferensi pengguna berdasarkan pola interaksi kolektif antar pengguna, tanpa bergantung pada atribut produk. Teknik ini bekerja dengan mengidentifikasi kesamaan perilaku antara pengguna atau item berdasarkan data historis seperti pembelian, penilaian, atau tampilan. Collaborative filtering terbagi menjadi dua jenis utama: memory-based (berbasis pengguna atau item) dan model-based (menggunakan algoritma pembelajaran mesin). Dalam konteks fashion, teknik ini efektif karena preferensi gaya sering dipengaruhi oleh tren sosial dan perilaku pengguna lain, sehingga memungkinkan sistem untuk menangkap hubungan implisit antar produk yang tidak tampak secara eksplisit.
+
+**Kelebihan**
+
+- Tidak memerlukan product attributes yang detail
+- Menangkap relasi implisit antar produk
+- Identifikasi tren dan produk populer
+- Memberikan insights tentang segmen pasar
+
+**Kekurangan**
+
+- Cold start problem - untuk user baru dan produk baru
+- Scalability issues - tantangan komputasi saat data membesar
+- Popularity bias - produk populer lebih sering direkomendasikan
+- Lack of explainability - sulit menjelaskan alasan rekomendasi
+
+#### Singular Value Decomposition (SVD)
+
+Singular Value Decomposition (SVD) adalah teknik faktorisasi matriks yang digunakan dalam model-based collaborative filtering, khususnya melalui library Surprise. SVD memecah matriks interaksi pengguna-item menjadi tiga matriks berdimensi lebih rendah untuk mengungkap faktor laten seperti preferensi gaya, sensitivitas harga, atau afinitas merek. Dengan mereduksi dimensi dan mempertahankan nilai singular paling signifikan, SVD mengurangi noise dan meningkatkan akurasi rekomendasi. Implementasi di Surprise juga mencakup bias dan regularisasi untuk mencegah overfitting dan meningkatkan performa prediksi.
+
+Berikut ini adalah hasil dari penerapan model Collaborative FIltering dengan menggunakan library Surprise.
+
+**Implementasi Kode**:
+
+```
+recommend = cf_recommendation_system(cf_data)
+recommend.fit()
+
+recommend.recommendation(user_id=10)
+```
+
+**Output**:
+
+![image](https://github.com/user-attachments/assets/d9ea3668-2858-48c8-aaaa-301277cfe80d)
+
+Dengan menginisialisasi variabel recommend yang menyimpan nilai dari kelas `cf_recommendation_system` yang berisi model yang telah dibuat, kemudian melakukan `fit()` dan memanggil fungsi `recommendation()` berdasarkan `user_id` dengan nilai 10, model tersebut dapat memberikan 10 saran product berdasarkan rating yang diberikan oleh user_id dengan nilai 10.
 
 ## Evaluation
-Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+Untuk mengevaluasi model yang telah dibuat, pada proyek ini peneliti menggunakan metode evaluasi Precision@K untuk model CBF dan metode evaluasi cross validation (RMSE dan MAE) untuk model Collaborative Filtering. Berikut adalah hasil evaluasinya.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
+### Precision@K
+
+Precision\@K adalah metrik evaluasi yang mengukur proporsi item relevan di antara K rekomendasi teratas. Dalam rekomendasi fashion, metrik ini penting karena mencerminkan seberapa akurat sistem menyarankan produk yang sesuai dengan preferensi pengguna dalam daftar terbatas. Berikut adalah hasil dari penerapan evaluasi Precision@K pada model CBF.
+
+![image](https://github.com/user-attachments/assets/bd61c1f7-9bbf-4726-a916-d93366812766)
+
+Hasil evaluasi **Precision@K** 0.1 untuk "Shoes 996" menunjukkan bahwa hanya 10% dari K item teratas yang direkomendasikan relevan, kemungkinan karena dataset dominasi merek "Zara" dengan kategori beragam (Shoes, Sweater, Dress), dan model kurang fokus pada kesamaan kategori, memengaruhi akurasi rekomendasi.
+
+### Cross Validation (RMSE dan MAE)
+
+Cross validation adalah teknik evaluasi yang membagi dataset menjadi beberapa bagian untuk melatih dan menguji model collaborative filtering secara bergantian, sehingga hasil evaluasi lebih andal. Dua metrik yang umum digunakan adalah:
+
+- RMSE (Root Mean Squared Error)
+
+![image](https://github.com/user-attachments/assets/657591ca-132a-4243-a76d-4af68cd8d028)
+
+rumus diatas mengukur rata-rata kesalahan kuadrat antara rating prediksi dengan rating aktual. RMSE sensitif terhadap kesalahan besar.
+ 
+- MAE (Mean Absolute Error)
+
+![image](https://github.com/user-attachments/assets/efb10bc5-5696-415f-aec3-4de8cde585d2)
+
+yang menghitung rata-rata selisih absolut antara rating prediksi dan aktual, memberikan interpretasi yang lebih intuitif terhadap kesalahan prediksi.
+
+Dalam sistem rekomendasi fashion, metrik ini membantu menilai seberapa akurat model memprediksi preferensi pengguna terhadap produk fashion. Berikut ini adalah hasil dari penerapan cross validation RMSE dan MAE pada model collaborative filtering.
+
+![image](https://github.com/user-attachments/assets/8df5818d-be04-43c9-a677-142c387d9407)
+
+- Rata-rata RMSE (Root Mean Square Error) adalah 1.1698 ± 0.0399, artinya rata-rata kesalahan prediksi kuadratnya sekitar 1.17 dengan deviasi kecil, menunjukkan model cukup konsisten.
+- Rata-rata MAE (Mean Absolute Error) adalah 1.0032 ± 0.0457, berarti rata-rata kesalahan absolut model dalam memprediksi rating pengguna terhadap produk fashion adalah sekitar 1 poin.
+- Waktu pelatihan (fit time) sangat cepat, rata-rata hanya 0.03 detik per fold, dan waktu pengujian (test time) hampir nol, menunjukkan efisiensi komputasi yang tinggi.
+
+Secara keseluruhan, model SVD memberikan prediksi yang cukup akurat dan efisien untuk sistem rekomendasi fashion berdasarkan data interaksi pengguna.
+
+### Kesimpulan Hasil Evaluasi
 
 **---Ini adalah bagian akhir laporan---**
 
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.

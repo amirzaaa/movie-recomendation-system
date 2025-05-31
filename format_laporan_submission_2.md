@@ -335,5 +335,10 @@ Secara keseluruhan, model SVD memberikan prediksi yang cukup akurat dan efisien 
 
 ### Kesimpulan Hasil Evaluasi
 
+Berdasarkan hasil evaluasi terhadap sistem rekomendasi yang dibangun, dua pendekatan utama telah diterapkan, yaitu content-based filtering dan collaborative filtering menggunakan algoritma SVD. Content-based filtering memanfaatkan representasi fitur produk seperti brand dan kategori dengan teknik TF-IDF, yang kemudian dihitung kemiripannya menggunakan cosine similarity. Evaluasi dilakukan melalui metrik Precision\@K untuk mengukur relevansi hasil rekomendasi. Hasilnya menunjukkan bahwa sistem mampu menyarankan produk yang sejalan dengan preferensi pengguna sebelumnya, meskipun performanya masih terbatas pada atribut produk yang eksplisit dan tidak dapat memanfaatkan pola perilaku pengguna secara menyeluruh.
+
+Sementara itu, pendekatan collaborative filtering dengan algoritma SVD menunjukkan performa yang cukup baik berdasarkan hasil evaluasi menggunakan cross-validation. Nilai rata-rata RMSE sebesar 1.1698 dan MAE sebesar 1.0032 mengindikasikan bahwa model dapat memprediksi rating pengguna terhadap produk dengan tingkat akurasi yang dapat diterima. Metode ini efektif dalam menangkap hubungan laten antara pengguna dan item, yang tidak terlihat secara eksplisit dari fitur produk. Secara keseluruhan, kedua pendekatan memiliki keunggulan masing-masing dan dapat saling melengkapi jika digabungkan dalam model hybrid untuk menghasilkan sistem rekomendasi yang lebih akurat dan personal.
+
+
 **---Ini adalah bagian akhir laporan---**
 
